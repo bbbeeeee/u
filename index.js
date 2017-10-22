@@ -20,7 +20,7 @@ const getRandomNumbers = (num=1, min=0, max=100, col=1, base=10, rnd='new', form
       format
     }
   }).then(response => {
-    num -= (num > MAX_INTEGERS) ? MAX_INTEGERS : num
+    num -= (num > MAX_INTEGERS) ? MAX_INTEGERS : num;
     let newNums = response.data.split('\n');
     newNums.pop();
     nums = nums.concat(newNums);
@@ -39,7 +39,6 @@ const getRandomNumbers = (num=1, min=0, max=100, col=1, base=10, rnd='new', form
     } else {
       return nums;
     }
-
   }).catch(err => {
     console.log(err);
   });
@@ -48,7 +47,11 @@ const getRandomNumbers = (num=1, min=0, max=100, col=1, base=10, rnd='new', form
 // Creates bitmap from random integers into filename
 const createRandomBitmap = (filename) => {
   // 3 * pixel number for RGB values for each.
-  return getRandomNumbers(BMP_DIMENSION * BMP_DIMENSION * 3, 1, 255).then(nums => {
+  return getRandomNumbers(
+    BMP_DIMENSION * BMP_DIMENSION * 3,
+    1,
+    255
+  ).then(nums => {
     if(!nums) return null;
 
     // with enough random values for RGB for each pixel, make image
